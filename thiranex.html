@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Portfolio Website</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f4f7fa;
+      color:#333;
+    }
+
+    /* HEADER */
+
+    header{
+      background:#0f172a;
+      padding:18px 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .container{
+      width:90%;
+      margin:auto;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav h1{
+      color:#38bdf8;
+      font-size:30px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+    }
+
+    nav ul li{
+      margin-left:25px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)),
+      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      padding:20px;
+    }
+
+    .hero-content h2{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-content span{
+      color:#38bdf8;
+    }
+
+    .hero-content p{
+      font-size:22px;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      background:#38bdf8;
+      color:white;
+      text-decoration:none;
+      border-radius:5px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:white;
+      color:#0f172a;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+      font-size:40px;
+      color:#0f172a;
+      position:relative;
+    }
+
+    .section-title::after{
+      content:'';
+      width:80px;
+      height:4px;
+      background:#38bdf8;
+      display:block;
+      margin:10px auto;
+    }
+
+    section{
+      padding:80px 0;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:flex;
+      gap:50px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .about img{
+      width:320px;
+      border-radius:15px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .about-text{
+      flex:1;
+    }
+
+    .about-text h3{
+      margin-bottom:20px;
+      color:#38bdf8;
+      font-size:30px;
+    }
+
+    .about-text p{
+      margin-bottom:15px;
+      line-height:1.8;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:white;
+      padding:30px;
+      border-radius:10px;
+      text-align:center;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .skill-card h3{
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:white;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:scale(1.03);
+    }
+
+    .project-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      color:#38bdf8;
+      margin-bottom:15px;
+    }
+
+    .project-content p{
+      margin-bottom:20px;
+      line-height:1.6;
+    }
+
+    .project-content a{
+      text-decoration:none;
+      color:white;
+      background:#0f172a;
+      padding:10px 20px;
+      border-radius:5px;
+      display:inline-block;
+    }
+
+    .project-content a:hover{
+      background:#38bdf8;
+    }
+
+    /* SERVICES */
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .service-box{
+      background:#0f172a;
+      color:white;
+      padding:30px;
+      border-radius:10px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .service-box:hover{
+      background:#38bdf8;
+    }
+
+    .service-box h3{
+      margin:20px 0;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:#0f172a;
+      color:white;
+    }
+
+    .contact-form{
+      max-width:700px;
+      margin:auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:15px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:5px;
+    }
+
+    .contact-form button{
+      padding:14px 30px;
+      border:none;
+      background:#38bdf8;
+      color:white;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    .contact-form button:hover{
+      background:white;
+      color:#0f172a;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#020617;
+      color:white;
+      text-align:center;
+      padding:20px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+      }
+
+      nav ul{
+        margin-top:15px;
+      }
+
+      .hero-content h2{
+        font-size:40px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .about{
+        flex-direction:column;
+        text-align:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container">
+
+      <nav>
+
+        <h1>Sandhiya</h1>
+
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h2>Hello, I'm <span>Sandhiya</span></h2>
+
+      <p>
+        Full Stack Developer | UI/UX Designer | Programmer
+      </p>
+
+      <a href="#projects" class="btn">Explore Projects</a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT SECTION -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about">
+
+        <img src="https://via.placeholder.com/320" alt="Profile Image">
+
+        <div class="about-text">
+
+          <h3>Passionate Full Stack Developer</h3>
+
+          <p>
+            I am a dedicated web developer with experience in
+            creating responsive websites and full-stack web applications.
+            I enjoy solving problems and learning modern technologies.
+          </p>
+
+          <p>
+            My skills include frontend development using HTML, CSS,
+            JavaScript, React.js and backend technologies like Node.js,
+            Express.js, and MongoDB.
+          </p>
+
+          <p>
+            I love building user-friendly applications that provide
+            excellent user experience and performance.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills">
+
+        <div class="skill-card">
+          <h3>HTML5</h3>
+          <p>Building semantic and structured web pages.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>CSS3</h3>
+          <p>Creating responsive and beautiful layouts.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>JavaScript</h3>
+          <p>Adding interactivity and dynamic functionality.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>React.js</h3>
+          <p>Developing modern frontend applications.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Node.js</h3>
+          <p>Backend server-side application development.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>MongoDB</h3>
+          <p>Database management for full-stack projects.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects">
+
+        <div class="project-card">
+
+          <img src="https://via.placeholder.com/400x220" alt="">
+
+          <div class="project-content">
+
+            <h3>Portfolio Website</h3>
+
+            <p>
+              A modern portfolio website showcasing projects,
+              skills, and contact information.
+            </p>
+
+            <a href="#">View Project</a>
+
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <img src="https://via.placeholder.com/400x220" alt="">
+
+          <div class="project-content">
+
+            <h3>E-Commerce Website</h3>
+
+            <p>
+              Online shopping website with cart, login,
+              and payment features.
+            </p>
+
+            <a href="#">View Project</a>
+
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <img src="https://via.placeholder.com/400x220" alt="">
+
+          <div class="project-content">
+
+            <h3>Student Management System</h3>
+
+            <p>
+              Full-stack web application for managing
+              student records and attendance.
+            </p>
+
+            <a href="#">View Project</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="container">
+
+      <h2 class="section-title">Services</h2>
+
+      <div class="services">
+
+        <div class="service-box">
+
+          <h3>Web Design</h3>
+
+          <p>
+            Designing responsive and modern website interfaces.
+          </p>
+
+        </div>
+
+        <div class="service-box">
+
+          <h3>Frontend Development</h3>
+
+          <p>
+            Creating interactive frontend applications using React.
+          </p>
+
+        </div>
+
+        <div class="service-box">
+
+          <h3>Backend Development</h3>
+
+          <p>
+            Building secure backend APIs with Node.js and Express.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <h2 class="section-title" style="color:white;">Contact Me</h2>
+
+      <div class="contact-form">
+
+        <form>
+
+          <input type="text" placeholder="Enter Your Name" required>
+
+          <input type="email" placeholder="Enter Your Email" required>
+
+          <input type="text" placeholder="Subject">
+
+          <textarea rows="6" placeholder="Write Your Message"></textarea>
+
+          <button type="submit">Send Message</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 Sandhiya Portfolio Website | All Rights Reserved
+    </p>
+
+  </footer>
+
+</body>
+</html>
